@@ -1,8 +1,9 @@
-/* Author: 
+/* Author: Ian Culshaw http://www.ianculshaw.co.uk
 
 */
 
 $(document).ready(function() {
+	
 	function draw(){
 	  var canvas = document.getElementById('myCanvas');
 	  if (canvas.getContext){
@@ -61,6 +62,7 @@ $(document).ready(function() {
 	    //ctx.arc(0,0,400,0,Math.PI*2,true); // Outer circle
 	    ctx.moveTo(0,0);
 	    ctx.arc(100, 400, 10, 0, Math.PI*2, true);
+	    ctx.strokeStyle = $('#color').val()||'#000';
 	    ctx.stroke();
 		ctx.restore();
 		
@@ -70,6 +72,7 @@ $(document).ready(function() {
 	draw();
 	
 	$('#begin').click(function(event) {
+		$('.forcolor').show();
 		event.preventDefault();
 		shallIStop = false;
 		animate();

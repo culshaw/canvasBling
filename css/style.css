@@ -7,8 +7,8 @@ audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
-html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-body { margin: 0; font-size: 13px; line-height: 1.231; }
+html { font-size: 100%; overflow-y: scroll; overflow-x: hidden; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body { margin: 0; font-size: 13px; line-height: 1.231; overflow-x: hidden;}
 body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
@@ -63,23 +63,97 @@ td { vertical-align: top; }
 
 
 /* ==|== primary styles =====================================================
-   Author: Ian Culshaw
+   Author: Ian Culshaw http://www.ianculshaw.co.uk
    ========================================================================== */
 
-
-@-webkit-keyframes rotater { from { -webkit-transform: rotate(0deg); } to { -webkit-transform: rotate(360deg); }}
+#main {
+	position: relative;
+}
 
 #canvas { -webkit-animation: rotater 20s infinite forwards linear; -webkit-transform-origin: center center;  }
 
-/*#myCanvas { position: absolute; top: 210px; }/**/
+#begin, #stop, #color {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+#stop {
+	left:  100px;
+}
+
+#color {
+	 left:  200px;
+}
+	
+	.forcolor {
+		position: absolute;
+		left: 380px;
+		top: 23px;
+		display: block;
+	}
+
+#github {
+  right: -65px;
+  height: 30px;
+  top: 40px;
+  position: absolute;
+  text-decoration: none;
+  width: 250px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+	#github span {
+		background: black;
+		color: white;
+		font-size: 14px;
+		left: 0;
+		padding: 5px 0;
+		position: absolute;
+		text-align: center;
+		width: 250px;
+		box-shadow: rgba(0,0,0, 0.2) 1px 1px 10px;
+		-webkit-transition: opacity 1s;
+		-moz-transition: opacity 1s;
+	}
+	#github span:last-child {
+		/* this is the backside */
+		background: red;
+		opacity: 0;
+	}
+	
+	#github:hover span:first-child {
+	  opacity: 0;
+	}
+	#github:hover span:last-child {
+	  opacity: 1;
+	}
 
 
-
-
-
-
-
-
+@media all and (-webkit-transform-3d) {
+	#github {
+	
+	}
+		#github span {
+			opacity: 1 !important;
+			-webkit-backface-visibility: hidden;
+			-webkit-transition: -webkit-transform 1s;
+		}
+		
+			#github span:last-child {
+				-webkit-transform: rotateX(180deg);
+						
+			}
+			
+			#github:hover span:first-child {
+				-webkit-transform: rotateX(180deg);
+			}
+			#github:hover span:last-child {
+				-webkit-transform: rotateX(360deg);
+				
+			}
+}
 
 
 /* ==|== non-semantic helper classes ======================================== */
